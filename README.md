@@ -18,7 +18,7 @@ on the PR in **your fork**; this repo only tracks progress.
   all submission issues, joins them with `students.csv` + `plan.yaml`, and
   regenerates `site/state.json`. The state history committed by this workflow
   is the end-of-semester ledger.
-- [Progress grid](https://nsu-syspro.github.io/compiler-infra/) — students ×
+- [Progress grid](https://nsu-syspro.github.io/compiler-status/) — students ×
   milestones, regenerated from `state.json`.
 - `scripts/gen_forms.py` regenerates the issue forms and labels from
   `plan.yaml` — plan changes are data edits, never hand-edited forms.

@@ -31,7 +31,7 @@ from urllib.parse import urlparse
 
 import yaml
 
-REPO = os.environ.get("GITHUB_REPOSITORY", "nsu-syspro/compiler-infra")
+REPO = os.environ.get("GITHUB_REPOSITORY", "nsu-syspro/compiler-status")
 LABEL_ACCEPTED = "✅ accepted"
 LABEL_REDO = "🔴 changes-requested"
 STATE_ORDER = {LABEL_ACCEPTED: "accepted", LABEL_REDO: "changes-requested"}

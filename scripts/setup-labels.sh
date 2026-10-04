@@ -2,7 +2,7 @@
 # Idempotently create the decision/automation labels in the infra repo.
 # Run once after repo creation (or after label renames). Requires gh auth.
 set -euo pipefail
-REPO="${1:-nsu-syspro/compiler-infra}"
+REPO="${1:-nsu-syspro/compiler-status}"
 
 mk() { # name color description
   gh label create "$1" -R "$REPO" --color "$2" --description "$3" 2>/dev/null \

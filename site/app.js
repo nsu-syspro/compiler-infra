@@ -14,8 +14,9 @@ async function main() {
   const state = await res.json();
   const app = document.getElementById("app");
 
-  document.getElementById("meta").textContent =
-    `Updated: ${state.generated} · group ${[...new Set(state.students.map(s => s.group))].join(", ")}`;
+  document.getElementById("meta").innerHTML =
+    `Updated: ${state.generated} · group ${[...new Set(state.students.map(s => s.group))].join(", ")}` +
+    ` · <a href="personal.html">personal graph view</a>`;
 
   document.getElementById("legend").innerHTML =
     Object.entries(ICON).map(([k, v]) => `<span>${v} ${TITLE[k]}</span>`).join("")

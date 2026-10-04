@@ -1,0 +1,39 @@
+name: Claim achievement
+description: Claim a semester-2 achievement (points-based)
+title: 'Claim: '
+labels:
+- submitted
+body:
+- type: dropdown
+  id: achievement
+  attributes:
+    label: Achievement
+    options:
+    - syn-recovery — Error recovery in the parser (multiple errors per run)
+    - 'sem-checks — Semantic checks: types, scoping, duplicate declarations'
+    - cfg-explicit — Explicit CFG construction (basic blocks + edges)
+    - ssa-form — SSA construction with phi functions
+    - const-fold — Constant folding on IR
+    - dce — Dead code elimination
+    - licm — Loop-invariant code motion
+    - peephole — Peephole optimizations pass
+    - native-codegen — Native x86-64 codegen (bypassing LLVM)
+    - reg-alloc — Register allocation (linear scan or graph coloring)
+    - runtime-lib — Runtime library (I/O, string ops, conversions)
+    - gc — Garbage collector for managed data
+    - differential-fuzz — Differential fuzzing of the compiler
+    - repl — REPL for the language
+  validations:
+    required: true
+- type: input
+  id: fork-pr
+  attributes:
+    label: Fork PR link
+    description: Full URL of the implementation PR in your fork
+  validations:
+    required: true
+- type: textarea
+  id: evidence
+  attributes:
+    label: Evidence (optional)
+    description: Demo output / tests proving the achievement, if not evident from the PR

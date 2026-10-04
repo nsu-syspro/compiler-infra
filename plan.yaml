@@ -119,15 +119,147 @@ nodes:
     accept: ["TBD — pin when grammar-5 goldens land upstream"]
 
   # ---------------- Semester 2: achievement tree ----------------
-  # To be drafted WITH students before semester 2. Schema example (keep
-  # commented until finalized):
-  #
-  # - id: ssa-form
-  #   kind: achievement
-  #   track: s2
-  #   category: ir          # syntax | semantics | opt | ir | backend | runtime | tooling
-  #   title: "SSA construction"
-  #   points: 40
-  #   requires: [cfg-if-while]
-  #   verify: manual-review
-  #   accept: ["IR in unoptimized -O0 output is in SSA form on the demo suite"]
+  # EXAMPLE DAG — placeholder for the real tree, to be re-drafted WITH students
+  # before semester 2 (teacher's convention). Categories: syntax | semantics |
+  # opt | ir | backend | runtime | tooling. Students may propose new nodes via
+  # PR to this file (schema validated by plan-check CI).
+
+  - id: syn-recovery
+    kind: achievement
+    track: s2
+    category: syntax
+    title: "Error recovery in the parser (multiple errors per run)"
+    points: 15
+    requires: [g5]
+    verify: manual-review
+    accept: ["parser reports >1 error per run and continues; recovery tested in CI"]
+
+  - id: sem-checks
+    kind: achievement
+    track: s2
+    category: semantics
+    title: "Semantic checks: types, scoping, duplicate declarations"
+    points: 20
+    requires: [g5]
+    verify: manual-review
+    accept: ["invalid programs rejected with clear diagnostics, valid unaffected; test suite in CI"]
+
+  - id: cfg-explicit
+    kind: achievement
+    track: s2
+    category: ir
+    title: "Explicit CFG construction (basic blocks + edges)"
+    points: 25
+    requires: [g5]
+    verify: manual-review
+    accept: ["CFG is materialized and inspectable for if/while/short-circuit programs"]
+
+  - id: ssa-form
+    kind: achievement
+    track: s2
+    category: ir
+    title: "SSA construction with phi functions"
+    points: 40
+    requires: [cfg-explicit]
+    verify: manual-review
+    accept: ["unoptimized -O0 IR is in SSA form on the demo suite"]
+
+  - id: const-fold
+    kind: achievement
+    track: s2
+    category: opt
+    title: "Constant folding on IR"
+    points: 20
+    requires: [cfg-explicit]
+    verify: manual-review
+    accept: ["folded IR visible on demo inputs; -O flag switches it"]
+
+  - id: dce
+    kind: achievement
+    track: s2
+    category: opt
+    title: "Dead code elimination"
+    points: 15
+    requires: [cfg-explicit]
+    verify: manual-review
+    accept: ["unreachable/unused code removed; observable behavior unchanged on suite"]
+
+  - id: licm
+    kind: achievement
+    track: s2
+    category: opt
+    title: "Loop-invariant code motion"
+    points: 30
+    requires: [const-fold]
+    verify: manual-review
+    accept: ["invariant hoisting demonstrated on benchmark; behavior preserved"]
+
+  - id: peephole
+    kind: achievement
+    track: s2
+    category: opt
+    title: "Peephole optimizations pass"
+    points: 20
+    requires: [const-fold, dce]
+    verify: manual-review
+    accept: ["documented peephole rules with before/after IR tests"]
+
+  - id: native-codegen
+    kind: achievement
+    track: s2
+    category: backend
+    title: "Native x86-64 codegen (bypassing LLVM)"
+    points: 50
+    requires: [g5]
+    verify: manual-review
+    accept: ["emits assembly or machine code, links and runs the demo suite correctly"]
+
+  - id: reg-alloc
+    kind: achievement
+    track: s2
+    category: backend
+    title: "Register allocation (linear scan or graph coloring)"
+    points: 35
+    requires: [native-codegen]
+    verify: manual-review
+    accept: ["allocator demonstrably reduces spills vs naive allocation"]
+
+  - id: runtime-lib
+    kind: achievement
+    track: s2
+    category: runtime
+    title: "Runtime library (I/O, string ops, conversions)"
+    points: 20
+    requires: [g5]
+    verify: manual-review
+    accept: ["compiled programs link against it; documented API; tests"]
+
+  - id: gc
+    kind: achievement
+    track: s2
+    category: runtime
+    title: "Garbage collector for managed data"
+    points: 40
+    requires: [runtime-lib]
+    verify: manual-review
+    accept: ["allocation/reclamation cycle demonstrated; no leaks on stress test"]
+
+  - id: differential-fuzz
+    kind: achievement
+    track: s2
+    category: tooling
+    title: "Differential fuzzing of the compiler"
+    points: 25
+    requires: [g5]
+    verify: manual-review
+    accept: ["generator + differential check against reference runs in CI for N hours"]
+
+  - id: repl
+    kind: achievement
+    track: s2
+    category: tooling
+    title: "REPL for the language"
+    points: 20
+    requires: [runtime-lib]
+    verify: manual-review
+    accept: ["interactive session demo: expressions evaluate incrementally"]

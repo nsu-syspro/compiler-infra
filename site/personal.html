@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SysPro compiler course — personal progress</title>
+<style>
+  body { font-family: -apple-system, "Segoe UI", Roboto, sans-serif; margin: 1.5rem; color: #1f2328; }
+  h1 { font-size: 1.3rem; } h2 { font-size: 1.05rem; margin-top: 1.5rem; }
+  .meta { color: #656d76; font-size: .85rem; }
+  .legend span { margin-right: 1rem; font-size: .85rem; }
+  .legend .sw { display: inline-block; width: .85em; height: .85em; border-radius: 3px; vertical-align: -1px; }
+  table { border-collapse: collapse; font-size: .85rem; margin-top: .3rem; }
+  th, td { border: 1px solid #d0d7de; padding: .3rem .5rem; text-align: left; }
+  a { color: #0969da; text-decoration: none; } a:hover { text-decoration: underline; }
+  #graph { max-width: 900px; }
+  .err { color: #cf222e; }
+  select { font-size: 1rem; padding: .2rem .4rem; }
+</style>
+</head>
+<body>
+<h1>Personal progress</h1>
+<div class="meta">
+  <label>Student: <select id="who"></select></label>
+  <span id="meta"></span>
+</div>
+<div class="legend" id="legend"></div>
+<h2>Achievement graph</h2>
+<div id="app">Loading…</div>
+<h2>Points</h2>
+<div id="points">—</div>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs" type="module"></script>
+<script src="personal.js"></script>
+</body>
+</html>

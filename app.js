@@ -3,10 +3,11 @@
 
 const ICON = { accepted: "🟢", "changes-requested": "🔴", open: "🟡" };
 const TITLE = {
-  accepted: "принято",
-  "changes-requested": "запрошены изменения",
-  open: "на проверке",
+  accepted: "accepted",
+  "changes-requested": "changes requested",
+  open: "under review",
 };
+const NOT_SUBMITTED = "not submitted";
 
 async function main() {
   const res = await fetch("state.json");
@@ -14,27 +15,25 @@ async function main() {
   const app = document.getElementById("app");
 
   document.getElementById("meta").textContent =
-    `Обновлено: ${state.generated} · группа ${[...new Set(state.students.map(s => s.group))].join(", ")}`;
+    `Updated: ${state.generated} · group ${[...new Set(state.students.map(s => s.group))].join(", ")}`;
 
   document.getElementById("legend").innerHTML =
     Object.entries(ICON).map(([k, v]) => `<span>${v} ${TITLE[k]}</span>`).join("")
-    + `<span>⚪ не сдано</span>`;
+    + `<span>⚪ ${NOT_SUBMITTED}</span>`;
 
   const nodes = state.nodes.filter(n => n.kind === "milestone");
   const grid = state.grid || {};
-  const byHandle = Object.fromEntries(state.students.map(s => [s.handle.toLowerCase(), s]));
 
-  let html = "<table><tr><th>Студент</th>";
+  let html = "<table><tr><th>Student</th>";
   for (const n of nodes) html += `<th class="node" title="${esc(n.title)}">${esc(n.id)}</th>`;
-  html += "<th>Баллы</th><th>Ветка</th></tr>";
+  html += "<th>Points</th><th>PRs</th></tr>";
 
   for (const s of state.students) {
-    const h = s.handle.toLowerCase();
-    const cells = grid[h] || {};
+    const cells = grid[s.handle.toLowerCase()] || {};
     html += `<tr><td>${esc(s.name)} <a href="${esc(s.fork)}">(${esc(s.handle)})</a></td>`;
     for (const n of nodes) {
       const c = cells[n.id];
-      if (!c) { html += `<td class="st" title="не сдано">⚪</td>`; continue; }
+      if (!c) { html += `<td class="st" title="${NOT_SUBMITTED}">⚪</td>`; continue; }
       const icon = ICON[c.state] || "⚪";
       const tip = c.via ? `${TITLE[c.state]} (via ${c.via})` : (TITLE[c.state] || c.state);
       const links = [];
@@ -58,4 +57,4 @@ function esc(x) {
     ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 }
 
-main().catch(e => { document.getElementById("app").textContent = "Ошибка: " + e; });
+main().catch(e => { document.getElementById("app").textContent = "Error: " + e; });

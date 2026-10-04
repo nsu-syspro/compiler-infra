@@ -1,0 +1,37 @@
+name: harvest
+on:
+  schedule:
+    - cron: "5 * * * *" # hourly, offset from the top of the hour
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ["plan.yaml", "students.csv", "scripts/harvest.py"]
+
+permissions:
+  issues: read
+  contents: write
+
+concurrency:
+  group: harvest
+  cancel-in-progress: false
+
+jobs:
+  harvest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pyyaml
+      - name: Harvest submission issues
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 scripts/harvest.py
+      - name: Deploy state.json to Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ github.token }}
+          publish_dir: ./site
+          keep_files: false
+          commit_message: "harvest: ${{ github.sha }}"

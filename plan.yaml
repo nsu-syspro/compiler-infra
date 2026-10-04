@@ -1,0 +1,133 @@
+# Unified course plan — syspro compiler course (nsu-syspro)
+#
+# ONE data model for both semesters: a DAG of nodes.
+#   * kind: milestone   — semester-1 gates. Teacher-owned; students do not PR these.
+#                         Binary pass/fail (points: 0); linearity = chain of `requires`.
+#   * kind: achievement — semester-2. Points-based; students propose new nodes via PR
+#                         to this file (merge = proposal accepted).
+#
+# Field reference:
+#   id        stable identifier — NEVER renamed after first publication
+#             (join key for submission issues, grid columns, form dropdowns)
+#   track     s1 | s2
+#   grammar   1..5 | absent
+#   stage     lexer | parser | codegen | (future: runtime, backend, ...)
+#             present only when the node gates a single stage; omitted for
+#             whole-grammar nodes (g2..g5 = all stages). stage is OPTIONAL —
+#             new stages are just new values, no schema change.
+#   title     display title (may change; the id may not)
+#   points    0 for milestones; > 0 for achievements
+#   requires  prerequisite node ids
+#   verify    manual-review | harness:<suite>   (harness verification added later where cheap)
+#   accept    acceptance criteria — exactly what the teacher verifies before Approve
+#
+# NOTE: grammar-2+ harness goldens are WIP upstream; `accept` criteria for g2+
+# nodes are TBD and must be pinned when the goldens land.
+# Semester boundary (which grammars are s1 vs s2) is the teacher's call —
+# nodes below are marked s1 provisionally; adjust `track` when decided.
+
+nodes:
+  # ---------------- Semester 1: linear milestone chain ----------------
+  # Grammar 1 = three stage gates (lexer / parser / codegen, the mandatory
+  # per-stage pipeline); grammars 2-5 = one node per grammar, all stages.
+  # Students may attach multiple fork PRs to one submission issue — the issue
+  # stores the primary link; further PRs go into the issue thread.
+
+  - id: g1-lexer
+    kind: milestone
+    track: s1
+    grammar: 1
+    stage: lexer
+    title: "Grammar 1 — Lexer"
+    points: 0
+    requires: []
+    verify: manual-review
+    accept:
+      - "grammar-1 lexer stage green in the student's CI (harness: --stage lexer --grammar 1)"
+      - "lexical errors exit nonzero on any erroring input; exit() truncation to low 8 bits must not turn an error run into exit 0 (regression: file with 256 ERROR tokens must not exit 0)"
+      - "Int64 literals do not wrap/crash at >= 2^62 (verify by running the lexer binary manually; token value is only visible if 'value' is in the harness keep-list)"
+      - "'//' comment at EOF without trailing newline: defined behavior per spec (error or token), must not crash or hang"
+
+  - id: g1-parser
+    kind: milestone
+    track: s1
+    grammar: 1
+    stage: parser
+    title: "Grammar 1 — Parser"
+    points: 0
+    requires: [g1-lexer]
+    verify: manual-review
+    accept:
+      - "grammar-1 parser stage green (--stage parser --grammar 1); AST goldens match"
+      - "syntactically invalid inputs exit nonzero ('exit: nonzero' meta contract)"
+      - "stubbed/failing later stages are acceptable at this point (review-scope decision)"
+
+  - id: g1-codegen
+    kind: milestone
+    track: s1
+    grammar: 1
+    stage: codegen
+    title: "Grammar 1 — Codegen (llvm + compile + run)"
+    points: 0
+    requires: [g1-parser]
+    verify: manual-review
+    accept:
+      - "--stage llvm --check-ir goldens (IR goldens; alignment is governed by datalayout — triple/datalayout diffs are not dismissible as cosmetic)"
+      - "--stage compile and --stage run green (executed output matches goldens)"
+
+  # Grammars 2-5: one node per grammar covering all stages (lexer, parser,
+  # codegen — plus future stages: runtime, backend, ...).
+
+  - id: g2
+    kind: milestone
+    track: s1
+    grammar: 2
+    title: "Grammar 2 — Control flow (if/while/break/continue), all stages"
+    points: 0
+    requires: [g1-codegen]
+    verify: manual-review
+    accept: ["TBD — pin when grammar-2 goldens land upstream"]
+
+  - id: g3
+    kind: milestone
+    track: s1
+    grammar: 3
+    title: "Grammar 3 — Functions (def/extern), all stages"
+    points: 0
+    requires: [g2]
+    verify: manual-review
+    accept: ["TBD — pin when grammar-3 goldens land upstream"]
+
+  - id: g4
+    kind: milestone
+    track: s1
+    grammar: 4
+    title: "Grammar 4 — Primitive types (Int8..64, Bool, String, cast), all stages"
+    points: 0
+    requires: [g3]
+    verify: manual-review
+    accept: ["TBD — pin when grammar-4 goldens land upstream"]
+
+  - id: g5
+    kind: milestone
+    track: s1
+    grammar: 5
+    title: "Grammar 5 — Structs and arrays, all stages"
+    points: 0
+    requires: [g4]
+    verify: manual-review
+    accept: ["TBD — pin when grammar-5 goldens land upstream"]
+
+  # ---------------- Semester 2: achievement tree ----------------
+  # To be drafted WITH students before semester 2. Schema example (keep
+  # commented until finalized):
+  #
+  # - id: ssa-form
+  #   kind: achievement
+  #   track: s2
+  #   category: ir          # syntax | semantics | opt | ir | backend | runtime | tooling
+  #   title: "SSA construction"
+  #   points: 40
+  #   requires: [cfg-if-while]
+  #   verify: manual-review
+  #   accept: ["IR in unoptimized -O0 output is in SSA form on the demo suite"]

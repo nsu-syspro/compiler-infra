@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+- name: Course materials / questions
+  about: Use the course chat or seminar, not issues here — this repo only tracks submissions.
+  url: https://github.com/nsu-syspro

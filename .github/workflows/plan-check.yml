@@ -1,0 +1,29 @@
+name: plan-check
+on:
+  pull_request:
+    paths: ["plan.yaml"]
+  push:
+    branches: [main]
+    paths: ["plan.yaml"]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pyyaml
+      - name: Validate plan.yaml (schema + DAG)
+        run: python3 scripts/validate.py plan.yaml
+      - name: Check issue forms are up to date
+        run: |
+          python3 scripts/gen_forms.py
+          git diff --exit-code .github/ISSUE_TEMPLATE/ || {
+            echo "::error::issue forms out of date — run scripts/gen_forms.py and commit"
+            exit 1
+          }

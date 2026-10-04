@@ -1,0 +1,46 @@
+name: Submit milestone
+description: Submit a completed milestone (semester 1) for review
+title: 'Submission: '
+labels:
+- submitted
+body:
+- type: dropdown
+  id: milestone
+  attributes:
+    label: Milestone
+    description: Pick the milestone you are submitting (code review happens on the PR in YOUR fork)
+    options:
+    - g1-lexer — Grammar 1 — Lexer
+    - g1-parser — Grammar 1 — Parser
+    - g1-codegen — Grammar 1 — Codegen (llvm + compile + run)
+    - g2 — Grammar 2 — Control flow (if/while/break/continue), all stages
+    - g3 — Grammar 3 — Functions (def/extern), all stages
+    - g4 — Grammar 4 — Primitive types (Int8..64, Bool, String, cast), all stages
+    - g5 — Grammar 5 — Structs and arrays, all stages
+  validations:
+    required: true
+- type: input
+  id: fork-pr
+  attributes:
+    label: Fork PR link
+    description: Full URL of the implementation PR in your fork
+    placeholder: https://github.com/<your-handle>/<repo>/pull/<number>
+  validations:
+    required: true
+- type: textarea
+  id: evidence
+  attributes:
+    label: Evidence
+    description: Harness output summary (CI link, pass counts). Screenshots okay.
+    placeholder: 'lexer stage: 42/42 goldens green in CI run <link>'
+  validations:
+    required: true
+- type: checkboxes
+  id: checklist
+  attributes:
+    label: Checklist
+    options:
+    - label: CI on the linked PR is green
+      required: true
+    - label: I am the author of the linked PR and the fork owner
+      required: true

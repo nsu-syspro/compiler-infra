@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-04T08:59:58+00:00",
+  "generated": "2026-10-04T09:45:38+00:00",
   "repo": "nsu-syspro/compiler-status",
   "nodes": [
     {
@@ -62,6 +62,133 @@
         "g4"
       ],
       "points": 0
+    },
+    {
+      "id": "syn-recovery",
+      "title": "Error recovery in the parser (multiple errors per run)",
+      "kind": "achievement",
+      "requires": [
+        "g5"
+      ],
+      "points": 15
+    },
+    {
+      "id": "sem-checks",
+      "title": "Semantic checks: types, scoping, duplicate declarations",
+      "kind": "achievement",
+      "requires": [
+        "g5"
+      ],
+      "points": 20
+    },
+    {
+      "id": "cfg-explicit",
+      "title": "Explicit CFG construction (basic blocks + edges)",
+      "kind": "achievement",
+      "requires": [
+        "g5"
+      ],
+      "points": 25
+    },
+    {
+      "id": "ssa-form",
+      "title": "SSA construction with phi functions",
+      "kind": "achievement",
+      "requires": [
+        "cfg-explicit"
+      ],
+      "points": 40
+    },
+    {
+      "id": "const-fold",
+      "title": "Constant folding on IR",
+      "kind": "achievement",
+      "requires": [
+        "cfg-explicit"
+      ],
+      "points": 20
+    },
+    {
+      "id": "dce",
+      "title": "Dead code elimination",
+      "kind": "achievement",
+      "requires": [
+        "cfg-explicit"
+      ],
+      "points": 15
+    },
+    {
+      "id": "licm",
+      "title": "Loop-invariant code motion",
+      "kind": "achievement",
+      "requires": [
+        "const-fold"
+      ],
+      "points": 30
+    },
+    {
+      "id": "peephole",
+      "title": "Peephole optimizations pass",
+      "kind": "achievement",
+      "requires": [
+        "const-fold",
+        "dce"
+      ],
+      "points": 20
+    },
+    {
+      "id": "native-codegen",
+      "title": "Native x86-64 codegen (bypassing LLVM)",
+      "kind": "achievement",
+      "requires": [
+        "g5"
+      ],
+      "points": 50
+    },
+    {
+      "id": "reg-alloc",
+      "title": "Register allocation (linear scan or graph coloring)",
+      "kind": "achievement",
+      "requires": [
+        "native-codegen"
+      ],
+      "points": 35
+    },
+    {
+      "id": "runtime-lib",
+      "title": "Runtime library (I/O, string ops, conversions)",
+      "kind": "achievement",
+      "requires": [
+        "g5"
+      ],
+      "points": 20
+    },
+    {
+      "id": "gc",
+      "title": "Garbage collector for managed data",
+      "kind": "achievement",
+      "requires": [
+        "runtime-lib"
+      ],
+      "points": 40
+    },
+    {
+      "id": "differential-fuzz",
+      "title": "Differential fuzzing of the compiler",
+      "kind": "achievement",
+      "requires": [
+        "g5"
+      ],
+      "points": 25
+    },
+    {
+      "id": "repl",
+      "title": "REPL for the language",
+      "kind": "achievement",
+      "requires": [
+        "runtime-lib"
+      ],
+      "points": 20
     }
   ],
   "students": [

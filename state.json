@@ -1,6 +1,6 @@
 {
-  "generated": "2026-10-04T08:30:48+00:00",
-  "repo": "nsu-syspro/compiler-infra",
+  "generated": "2026-10-04T08:44:52+00:00",
+  "repo": "nsu-syspro/compiler-status",
   "nodes": [
     {
       "id": "g1-lexer",
@@ -139,7 +139,7 @@
   "submissions": [
     {
       "issue": 1,
-      "issue_url": "https://github.com/nsu-syspro/compiler-infra/issues/1",
+      "issue_url": "https://github.com/nsu-syspro/compiler-status/issues/1",
       "issue_title": "Submission: Grammar 1 — Lexer (round-trip test)",
       "author": "liontiger23",
       "student": null,

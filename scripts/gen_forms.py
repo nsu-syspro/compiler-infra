@@ -76,11 +76,10 @@ def milestone_form(nodes: list[dict]) -> str:
                     "type": "textarea",
                     "id": "evidence",
                     "attributes": {
-                        "label": "Evidence",
-                        "description": "Harness output summary (CI link, pass counts). Screenshots okay.",
+                        "label": "Evidence (optional)",
+                        "description": "Anything the PR does not show by itself: harness pass counts, CI run link, caveats. Leave empty if the PR speaks for itself.",
                         "placeholder": "lexer stage: 42/42 goldens green in CI run <link>",
                     },
-                    "validations": {"required": True},
                 },
                 {
                     "type": "checkboxes",
@@ -131,10 +130,9 @@ def achievement_form(nodes: list[dict]) -> str:
                     "type": "textarea",
                     "id": "evidence",
                     "attributes": {
-                        "label": "Evidence",
-                        "description": "Demo output / tests proving the achievement",
+                        "label": "Evidence (optional)",
+                        "description": "Demo output / tests proving the achievement, if not evident from the PR",
                     },
-                    "validations": {"required": True},
                 },
             ],
         },

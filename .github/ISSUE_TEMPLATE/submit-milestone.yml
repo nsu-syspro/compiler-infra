@@ -30,11 +30,10 @@ body:
 - type: textarea
   id: evidence
   attributes:
-    label: Evidence
-    description: Harness output summary (CI link, pass counts). Screenshots okay.
+    label: Evidence (optional)
+    description: 'Anything the PR does not show by itself: harness pass counts, CI run link, caveats.
+      Leave empty if the PR speaks for itself.'
     placeholder: 'lexer stage: 42/42 goldens green in CI run <link>'
-  validations:
-    required: true
 - type: checkboxes
   id: checklist
   attributes:

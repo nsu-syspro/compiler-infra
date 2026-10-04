@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-04T07:54:40+00:00",
+  "generated": "2026-10-04T08:21:56+00:00",
   "repo": "nsu-syspro/compiler-infra",
   "nodes": [
     {
@@ -151,8 +151,9 @@
         "number": 7,
         "url": "https://github.com/Kaban41k/syspro-compiler/pull/7"
       },
-      "state": "open",
+      "state": "accepted",
       "labels": [
+        "✅ accepted",
         "submitted",
         "needs-triage"
       ],
@@ -161,8 +162,8 @@
         "author 'liontiger23' not in students.csv"
       ],
       "created_at": "2026-10-04T07:52:22Z",
-      "updated_at": "2026-10-04T07:53:01Z",
-      "issue_state": "OPEN"
+      "updated_at": "2026-10-04T07:58:08Z",
+      "issue_state": "CLOSED"
     }
   ],
   "grid": {

@@ -14,7 +14,7 @@ on the PR in **your fork**; this repo only tracks progress.
   `.github/ISSUE_TEMPLATE/`. Fields are embedded in the issue body by GitHub.
 - Acceptance = the `✅ accepted` label applied by the teacher on the submission
   issue (audit trail lives in the issue timeline).
-- `scripts/harvest.py` runs hourly (`.github/workflows/harvest.yml`): it reads
+- `scripts/harvest.py` runs daily at 03:00 NSK (`.github/workflows/harvest.yml`): it reads
   all submission issues, joins them with `students.csv` + `plan.yaml`, and
   regenerates `site/state.json`. The state history committed by this workflow
   is the end-of-semester ledger.

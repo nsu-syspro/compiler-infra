@@ -93,7 +93,7 @@ def load_students(path: Path) -> dict:
 
 
 def main() -> int:
-    token = os.environ.get("GITHUB_TOKEN")
+    token = os.environ.get("GITHUB_TOKEN") or os.environ.get("GH_TOKEN")
     issues = []
     if token:
         # Called in CI: use the GitHub API via gh CLI if available, else REST via urllib.

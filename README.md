@@ -49,7 +49,11 @@ site/                  static grid page (GitHub Pages)
 
 - Edit `plan.yaml` for any plan change; CI validates it; run
   `scripts/gen_forms.py` (or let the workflow) to refresh forms.
-- Accept a submission by applying `✅ accepted` to its issue. Keep the issue
-  open — it stays the evidence thread.
+- Accept a submission by applying `✅ accepted` to its issue, then **close the
+  issue** (keeps the issues list short; closed issues keep counting on the
+  grid). Accepting the most-advanced milestone of a chain approves its
+  prerequisites too (cascade, derived by harvest).
+- Redo = `🔴 changes-requested` + comment; the student edits the issue and
+  you re-check. Only the teacher closes an accepted issue.
 - The harvest workflow commits `state.json` snapshots to `gh-pages`-served
   history; do not rewrite that history.

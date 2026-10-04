@@ -169,19 +169,45 @@ def main() -> int:
             "issue_state": issue.get("state"),
         })
 
-    # Derive per-(student, node) grid status: best submission wins
-    # accepted > changes-requested > open (issues open; closed issues keep state
-    # but a re-submission supersedes).
+    # Derive per-(student, node) grid status.
+    # Direct submissions first: best state per node wins
+    # (accepted > changes-requested > open; latest issue wins among equals).
+    rank = {"accepted": 2, "changes-requested": 1, "open": 0}
     grid = {handle: {} for handle in students}
     for s in submissions:
         handle = (s["author"] or "").lower()
-        if handle not in grid:
+        if handle not in grid or s["node"] not in nodes:
             continue
         cur = grid[handle].get(s["node"])
-        rank = {"accepted": 2, "changes-requested": 1, "open": 0}
         if cur is None or rank[s["state"]] >= rank[cur["state"]]:
             grid[handle][s["node"]] = {"state": s["state"], "issue": s["issue"],
                                        "pr_url": s["pr"]["url"] if s["pr"] else None}
+
+    # Cascade: accepting the most-advanced milestone of a submission chain
+    # accepts all its `requires` ancestors too (students submit one issue per
+    # PR, picking the most advanced node — prerequisites are approved with it).
+    # changes-requested/open remain node-local: only accepted cascades.
+    def ancestors(nid: str) -> set:
+        out, stack = set(), [nid]
+        while stack:
+            cur = stack.pop()
+            for r in nodes[cur]["requires"]:
+                if r not in out:
+                    out.add(r)
+                    stack.append(r)
+        return out
+
+    for cells in grid.values():
+        for nid, c in list(cells.items()):
+            if c["state"] != "accepted":
+                continue
+            for anc in ancestors(nid):
+                cur = cells.get(anc)
+                # cascade fills empty cells and supersedes open submissions,
+                # but never overwrites a direct accepted/changes-requested
+                if cur is None or cur["state"] == "open":
+                    cells[anc] = {"state": "accepted", "issue": c["issue"],
+                                  "pr_url": c["pr_url"], "via": nid}
 
     state = {
         "generated": datetime.now(timezone.utc).isoformat(timespec="seconds"),

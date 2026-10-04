@@ -57,7 +57,7 @@ def milestone_form(nodes: list[dict]) -> str:
                     "id": "milestone",
                     "attributes": {
                         "label": "Milestone",
-                        "description": "Pick the milestone you are submitting (code review happens on the PR in YOUR fork)",
+                        "description": "Pick the MOST ADVANCED milestone this PR completes — its prerequisites are approved together with it (code review happens on the PR in YOUR fork)",
                         "options": [dropdown_value(n) for n in nodes],
                     },
                     "validations": {"required": True},

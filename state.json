@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-05T20:12:43+00:00",
+  "generated": "2026-10-06T20:07:48+00:00",
   "repo": "nsu-syspro/compiler-status",
   "nodes": [
     {
@@ -188,6 +188,54 @@
       "issue_state": "CLOSED"
     },
     {
+      "issue": 6,
+      "issue_url": "https://github.com/nsu-syspro/compiler-status/issues/6",
+      "issue_title": "Submission:",
+      "author": "Wokzy",
+      "student": "Ершов Егор Алексеевич",
+      "node": "g1-lexer",
+      "node_valid": true,
+      "pr": {
+        "owner": "Wokzy",
+        "repo": "compiler-base-nsu-syspro",
+        "number": 1,
+        "url": "https://github.com/Wokzy/compiler-base-nsu-syspro/pull/1"
+      },
+      "state": "open",
+      "labels": [
+        "submitted"
+      ],
+      "identity_ok": true,
+      "problems": [],
+      "created_at": "2026-10-06T10:53:55Z",
+      "updated_at": "2026-10-06T10:54:07Z",
+      "issue_state": "OPEN"
+    },
+    {
+      "issue": 8,
+      "issue_url": "https://github.com/nsu-syspro/compiler-status/issues/8",
+      "issue_title": "Submission: g1 lexer",
+      "author": "bblcs",
+      "student": "Горлач Андрей Викторович",
+      "node": "g1-lexer",
+      "node_valid": true,
+      "pr": {
+        "owner": "bblcs",
+        "repo": "sysploc",
+        "number": 1,
+        "url": "https://github.com/bblcs/sysploc/pull/1"
+      },
+      "state": "open",
+      "labels": [
+        "submitted"
+      ],
+      "identity_ok": true,
+      "problems": [],
+      "created_at": "2026-10-06T12:40:58Z",
+      "updated_at": "2026-10-06T12:41:13Z",
+      "issue_state": "OPEN"
+    },
+    {
       "issue": 1,
       "issue_url": "https://github.com/nsu-syspro/compiler-status/issues/1",
       "issue_title": "Submission: Grammar 1 — Lexer (round-trip test)",
@@ -262,12 +310,77 @@
       "created_at": "2026-10-05T04:38:28Z",
       "updated_at": "2026-10-05T04:38:39Z",
       "issue_state": "OPEN"
+    },
+    {
+      "issue": 9,
+      "issue_url": "https://github.com/nsu-syspro/compiler-status/issues/9",
+      "issue_title": "Submission: g1 parser",
+      "author": "bblcs",
+      "student": "Горлач Андрей Викторович",
+      "node": "g1-parser",
+      "node_valid": true,
+      "pr": {
+        "owner": "bblcs",
+        "repo": "sysploc",
+        "number": 2,
+        "url": "https://github.com/bblcs/sysploc/pull/2"
+      },
+      "state": "open",
+      "labels": [
+        "submitted"
+      ],
+      "identity_ok": true,
+      "problems": [],
+      "created_at": "2026-10-06T12:44:21Z",
+      "updated_at": "2026-10-06T12:44:34Z",
+      "issue_state": "OPEN"
+    },
+    {
+      "issue": 7,
+      "issue_url": "https://github.com/nsu-syspro/compiler-status/issues/7",
+      "issue_title": "Submission: grammar 2",
+      "author": "bo1led-owl",
+      "student": "Совцов Илья Дмитриевич",
+      "node": "g2",
+      "node_valid": true,
+      "pr": {
+        "owner": "bo1led-owl",
+        "repo": "spl-compiler",
+        "number": 2,
+        "url": "https://github.com/bo1led-owl/spl-compiler/pull/2"
+      },
+      "state": "open",
+      "labels": [
+        "submitted"
+      ],
+      "identity_ok": true,
+      "problems": [],
+      "created_at": "2026-10-06T12:27:01Z",
+      "updated_at": "2026-10-06T12:27:14Z",
+      "issue_state": "OPEN"
     }
   ],
   "grid": {
     "kaban41k": {},
-    "bblcs": {},
-    "wokzy": {},
+    "bblcs": {
+      "g1-parser": {
+        "state": "open",
+        "issue": 9,
+        "pr_url": "https://github.com/bblcs/sysploc/pull/2"
+      },
+      "g1-lexer": {
+        "state": "open",
+        "issue": 8,
+        "pr_url": "https://github.com/bblcs/sysploc/pull/1"
+      }
+    },
+    "wokzy": {
+      "g1-lexer": {
+        "state": "open",
+        "issue": 6,
+        "pr_url": "https://github.com/Wokzy/compiler-base-nsu-syspro/pull/1"
+      }
+    },
     "rostyanyandexlyceumcheeeeck": {},
     "eugenekornev": {},
     "nekrodnik": {
@@ -279,6 +392,11 @@
     },
     "mardaruin": {},
     "bo1led-owl": {
+      "g2": {
+        "state": "open",
+        "issue": 7,
+        "pr_url": "https://github.com/bo1led-owl/spl-compiler/pull/2"
+      },
       "g1-codegen": {
         "state": "accepted",
         "issue": 2,

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-06T20:07:48+00:00",
+  "generated": "2026-10-07T20:08:19+00:00",
   "repo": "nsu-syspro/compiler-status",
   "nodes": [
     {
@@ -163,6 +163,31 @@
       "issue_state": "CLOSED"
     },
     {
+      "issue": 13,
+      "issue_url": "https://github.com/nsu-syspro/compiler-status/issues/13",
+      "issue_title": "Submission: gr1 lexer",
+      "author": "EugeneKornev",
+      "student": "Корнев Евгений Георгиевич",
+      "node": "g1-lexer",
+      "node_valid": true,
+      "pr": {
+        "owner": "EugeneKornev",
+        "repo": "compiler-base",
+        "number": 1,
+        "url": "https://github.com/EugeneKornev/compiler-base/pull/1"
+      },
+      "state": "open",
+      "labels": [
+        "submitted",
+        "needs-triage"
+      ],
+      "identity_ok": true,
+      "problems": [],
+      "created_at": "2026-10-07T14:11:42Z",
+      "updated_at": "2026-10-07T14:11:57Z",
+      "issue_state": "OPEN"
+    },
+    {
       "issue": 3,
       "issue_url": "https://github.com/nsu-syspro/compiler-status/issues/3",
       "issue_title": "Submission:",
@@ -264,6 +289,79 @@
       "issue_state": "CLOSED"
     },
     {
+      "issue": 12,
+      "issue_url": "https://github.com/nsu-syspro/compiler-status/issues/12",
+      "issue_title": "Submission: gr1 lexer",
+      "author": "mardaruin",
+      "student": "Рудометова Марина Сергеевна",
+      "node": "g1-lexer",
+      "node_valid": true,
+      "pr": {
+        "owner": "mardaruin",
+        "repo": "nsu-syspro-compiler",
+        "number": 2,
+        "url": "https://github.com/mardaruin/nsu-syspro-compiler/pull/2"
+      },
+      "state": "open",
+      "labels": [
+        "submitted"
+      ],
+      "identity_ok": true,
+      "problems": [],
+      "created_at": "2026-10-07T12:01:56Z",
+      "updated_at": "2026-10-07T12:02:08Z",
+      "issue_state": "OPEN"
+    },
+    {
+      "issue": 15,
+      "issue_url": "https://github.com/nsu-syspro/compiler-status/issues/15",
+      "issue_title": "Submission: gr1 parser",
+      "author": "whiteevilbro",
+      "student": "Яковлев Максим Витальевич",
+      "node": "g1-lexer",
+      "node_valid": true,
+      "pr": {
+        "owner": "whiteevilbro",
+        "repo": "compiler-sysprolang",
+        "number": 1,
+        "url": "https://github.com/whiteevilbro/compiler-sysprolang/pull/1"
+      },
+      "state": "open",
+      "labels": [
+        "submitted"
+      ],
+      "identity_ok": true,
+      "problems": [],
+      "created_at": "2026-10-07T19:07:27Z",
+      "updated_at": "2026-10-07T19:07:40Z",
+      "issue_state": "OPEN"
+    },
+    {
+      "issue": 14,
+      "issue_url": "https://github.com/nsu-syspro/compiler-status/issues/14",
+      "issue_title": "Submission: gr1 parser",
+      "author": "EugeneKornev",
+      "student": "Корнев Евгений Георгиевич",
+      "node": "g1-parser",
+      "node_valid": true,
+      "pr": {
+        "owner": "EugeneKornev",
+        "repo": "compiler-base",
+        "number": 1,
+        "url": "https://github.com/EugeneKornev/compiler-base/pull/1"
+      },
+      "state": "open",
+      "labels": [
+        "submitted",
+        "needs-triage"
+      ],
+      "identity_ok": true,
+      "problems": [],
+      "created_at": "2026-10-07T14:12:24Z",
+      "updated_at": "2026-10-07T14:12:37Z",
+      "issue_state": "OPEN"
+    },
+    {
       "issue": 5,
       "issue_url": "https://github.com/nsu-syspro/compiler-status/issues/5",
       "issue_title": "Submission:",
@@ -312,6 +410,30 @@
       "issue_state": "OPEN"
     },
     {
+      "issue": 10,
+      "issue_url": "https://github.com/nsu-syspro/compiler-status/issues/10",
+      "issue_title": "Submission:  grammar 1 parser",
+      "author": "Wokzy",
+      "student": "Ершов Егор Алексеевич",
+      "node": "g1-parser",
+      "node_valid": true,
+      "pr": {
+        "owner": "Wokzy",
+        "repo": "compiler-base-nsu-syspro",
+        "number": 2,
+        "url": "https://github.com/Wokzy/compiler-base-nsu-syspro/pull/2"
+      },
+      "state": "open",
+      "labels": [
+        "submitted"
+      ],
+      "identity_ok": true,
+      "problems": [],
+      "created_at": "2026-10-07T07:03:02Z",
+      "updated_at": "2026-10-07T07:03:12Z",
+      "issue_state": "OPEN"
+    },
+    {
       "issue": 9,
       "issue_url": "https://github.com/nsu-syspro/compiler-status/issues/9",
       "issue_title": "Submission: g1 parser",
@@ -333,6 +455,30 @@
       "problems": [],
       "created_at": "2026-10-06T12:44:21Z",
       "updated_at": "2026-10-06T12:44:34Z",
+      "issue_state": "OPEN"
+    },
+    {
+      "issue": 11,
+      "issue_url": "https://github.com/nsu-syspro/compiler-status/issues/11",
+      "issue_title": "Submission: gr1 parser",
+      "author": "mardaruin",
+      "student": "Рудометова Марина Сергеевна",
+      "node": "g1-parser",
+      "node_valid": true,
+      "pr": {
+        "owner": "mardaruin",
+        "repo": "nsu-syspro-compiler",
+        "number": 2,
+        "url": "https://github.com/mardaruin/nsu-syspro-compiler/pull/2"
+      },
+      "state": "open",
+      "labels": [
+        "submitted"
+      ],
+      "identity_ok": true,
+      "problems": [],
+      "created_at": "2026-10-07T12:01:25Z",
+      "updated_at": "2026-10-07T12:01:38Z",
       "issue_state": "OPEN"
     },
     {
@@ -375,6 +521,11 @@
       }
     },
     "wokzy": {
+      "g1-parser": {
+        "state": "open",
+        "issue": 10,
+        "pr_url": "https://github.com/Wokzy/compiler-base-nsu-syspro/pull/2"
+      },
       "g1-lexer": {
         "state": "open",
         "issue": 6,
@@ -382,7 +533,18 @@
       }
     },
     "rostyanyandexlyceumcheeeeck": {},
-    "eugenekornev": {},
+    "eugenekornev": {
+      "g1-parser": {
+        "state": "open",
+        "issue": 14,
+        "pr_url": "https://github.com/EugeneKornev/compiler-base/pull/1"
+      },
+      "g1-lexer": {
+        "state": "open",
+        "issue": 13,
+        "pr_url": "https://github.com/EugeneKornev/compiler-base/pull/1"
+      }
+    },
     "nekrodnik": {
       "g1-parser": {
         "state": "open",
@@ -390,7 +552,18 @@
         "pr_url": "https://github.com/NekrodNIK/splc/pull/1"
       }
     },
-    "mardaruin": {},
+    "mardaruin": {
+      "g1-lexer": {
+        "state": "open",
+        "issue": 12,
+        "pr_url": "https://github.com/mardaruin/nsu-syspro-compiler/pull/2"
+      },
+      "g1-parser": {
+        "state": "open",
+        "issue": 11,
+        "pr_url": "https://github.com/mardaruin/nsu-syspro-compiler/pull/2"
+      }
+    },
     "bo1led-owl": {
       "g2": {
         "state": "open",
@@ -402,13 +575,13 @@
         "issue": 2,
         "pr_url": "https://github.com/bo1led-owl/spl-compiler/pull/1"
       },
-      "g1-parser": {
+      "g1-lexer": {
         "state": "accepted",
         "issue": 2,
         "pr_url": "https://github.com/bo1led-owl/spl-compiler/pull/1",
         "via": "g1-codegen"
       },
-      "g1-lexer": {
+      "g1-parser": {
         "state": "accepted",
         "issue": 2,
         "pr_url": "https://github.com/bo1led-owl/spl-compiler/pull/1",
@@ -427,6 +600,12 @@
         "pr_url": "https://github.com/Trinity-142/syspro-compiler/pull/1"
       }
     },
-    "whiteevilbro": {}
+    "whiteevilbro": {
+      "g1-lexer": {
+        "state": "open",
+        "issue": 15,
+        "pr_url": "https://github.com/whiteevilbro/compiler-sysprolang/pull/1"
+      }
+    }
   }
 }
